@@ -1,0 +1,27 @@
+{% extends 'Template.html' %}
+
+{% load static %}
+{##}
+{% block title %}Register {% endblock %}
+{##}
+{% block styles %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Registerstyle.css' %}">
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="shadow-wrap">
+            <div class="form-wrap">
+                <h3>Registrate</h3>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form }}
+                    <button type="submit">Registrarte</button>
+                </form>
+                <a class="signup-link" href="{% url 'login' %}">Ya tienes una cuenta? Inicia sesion</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
