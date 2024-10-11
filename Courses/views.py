@@ -6,7 +6,7 @@ from Courses.models import Course, Section
 
 # Create your views here.
 def index(request):
-    courses = Course.objects.all()
+    courses = Course.objects.all()[:3]
     return render(request, 'courses/Index.html', {'courses': courses})
 
 @login_required

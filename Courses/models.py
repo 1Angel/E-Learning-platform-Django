@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
@@ -11,7 +12,7 @@ class Course(models.Model):
         return self.title
 
 
-
+#videos de curso
 class Section(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField(max_length=500)
@@ -22,3 +23,5 @@ class Section(models.Model):
 
     def __str__(self):
         return self.title
+
+

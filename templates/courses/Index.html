@@ -1,8 +1,48 @@
 {% extends 'Template.html' %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/indexStyle.css' %}">
+{% endblock %}
 
 {% block content %}
-    <div>
-        <h1>Pagina principal</h1>
+
+    <!-----slider--->
+    <div id="hero-carousel" class="carousel slide">
+
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+        </div>
+
+        <div class="carousel-inner">
+            <div class="carousel-item active c-item">
+                <img src="/static/images/imagen1.jpg" class="d-block w-100 c-img" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Aprende con nosotros</h5>
+                    <p>Desde cualquier parte del mundo, solo necesitas  conexion a internet</p>
+                </div>
+
+            </div>
+            <div class="carousel-item c-item">
+                <img src="/static/images/imagen2.jpg" class="d-block w-100 c-img" alt="...">
+            </div>
+            <div class="carousel-item c-item">
+                <img src="/static/images/imagen3.jpg" class="d-block w-100 c-img" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#hero-carousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#hero-carousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
 
     {#    <div>#}
@@ -20,20 +60,22 @@
     {#    </div>#}
 
 
-
-
+    <br/>
+    <br/>
+    <center><h1>Nuestros Cursos</h1></center>
+    <br>
     <div class="row row-cols-1 row-cols-md-3 g-4 p-4">
-    {% for i in courses %}
-        <div class="col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">{{ i.title }}</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="course/{{ i.id }}" class="btn btn-primary">Ver detalles</a>
+        {% for i in courses %}
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ i.title }}</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="course/{{ i.id }}" class="btn btn-primary">Ver detalles</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
     </div>
 
 {% endblock %}
