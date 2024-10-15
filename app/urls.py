@@ -19,10 +19,11 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-from auth import views
+from AuthUser import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Courses.urls')),
+    path('user/',include('AuthUser.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/register', views.regitration, name='register'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

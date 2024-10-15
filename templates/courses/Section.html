@@ -1,6 +1,14 @@
 {% extends 'Template.html' %}
 
 
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/SectionStyle.css' %}">
+{% endblock %}
+
+
+
 {% block title %}{{ section.title }} {% endblock %}
 
 {% block content %}
@@ -15,7 +23,7 @@
 
         </div>
 
-        <div class="col">
+        <div class="col lista">
             <ul class="list-group">
                 {% for i in allsections %}
                     <li class="list-group-item">

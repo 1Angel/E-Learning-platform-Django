@@ -1,7 +1,8 @@
 from django.contrib.auth import login, logout
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
-from auth.forms import RegistrationForm
+from AuthUser.forms import RegistrationForm, ProfileForm
 
 
 # Create your views here.
@@ -23,3 +24,17 @@ def regitration(request):
 def logoutview(request):
     logout(request)
     return redirect('login')
+
+
+@login_required
+def userProfile(request):
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
+        if form.is_valid():
+            form.save()
+            return redirect(to='profile')
+
+    else:
+        form = ProfileForm()
+
+    return render(request, 'auth/profile.html', {"form": form})

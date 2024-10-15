@@ -1,0 +1,9 @@
+.titulo{
+    margin-left: 20px;
+}
+
+.card-img-top {
+width: 90%;
+height: 40vh;
+object-fit: cover;
+}

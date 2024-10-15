@@ -62,15 +62,14 @@
 
     <br/>
     <br/>
-    <center><h1>Nuestros Cursos</h1></center>
-    <br>
+    <center><h1>Algunos de Nuestros Cursos</h1></center>
     <div class="row row-cols-1 row-cols-md-3 g-4 p-4">
         {% for i in courses %}
             <div class="col-sm-6">
-                <div class="card">
+                <div class="card h-100">
                     <div class="card-body">
                         <h5 class="card-title">{{ i.title }}</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <p class="card-text">{{ i.description }}</p>
                         <a href="course/{{ i.id }}" class="btn btn-primary">Ver detalles</a>
                     </div>
                 </div>

@@ -7,3 +7,8 @@
 	cursor: pointer;
 	outline: inherit;
 }
+
+#search{
+    display:block;
+    text-align:center;
+}

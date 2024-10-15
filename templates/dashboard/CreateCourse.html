@@ -1,0 +1,22 @@
+{% extends 'DashBoardTemplate.html' %}
+
+{% block title %}Create Course {% endblock %}
+
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/DetailsStyle.css' %}">
+{% endblock %}
+
+
+{% block contentx %}
+    <div class="containerxd">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form }}
+            <br>
+            <button class="btn btn-primary" type="submit">Crear Curso</button>
+        </form>
+    </div>
+
+{% endblock %}

@@ -1,20 +1,40 @@
 {% extends 'Template.html' %}
 
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/DetailsStyle.css' %}">
+{% endblock %}
+
+
+
 {% block title %} {{ course.title }} {% endblock %}
 
 {% block content %}
 
-    <div>
+    <div class="containerxd">
         <h2>{{ course.title }}</h2>
         <p>{{ course.description }}</p>
 
-        <ul>
+        {#        <ul>#}
+        {#            {% for i in sections %}#}
+        {#                <li><a href="{{ course.pk }}/section/{{ i.id }}">{{ i.title }}</a></li>#}
+        {#            {% endfor %}#}
+        {#        </ul>#}
+        {##}
+        {#        <h6>Created Date: {{ course.created_at }}</h6>#}
+
+
+        <div class="list-group">
             {% for i in sections %}
-                <li><a href="{{ course.pk }}/section/{{ i.id }}">{{ i.title }}</a></li>
+                <a href="{{ course.pk }}/section/{{ i.id }}" class="list-group-item list-group-item-action" aria-current="true">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{ i.title }}</h5>
+                        <small>{{ i.created_at }}</small>
+                    </div>
+                    <p class="mb-1">{{ i.description }}</p>
+                </a>
             {% endfor %}
-        </ul>
-
-        <h6>Created Date: {{ course.created_at }}</h6>
+        </div>
     </div>
-
 {% endblock %}
