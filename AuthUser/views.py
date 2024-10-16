@@ -20,12 +20,6 @@ def regitration(request):
     return render(request, 'registration/register.html', {"form": form})
 
 
-
-def logoutview(request):
-    logout(request)
-    return redirect('login')
-
-
 @login_required
 def userProfile(request):
     if request.method == 'POST':

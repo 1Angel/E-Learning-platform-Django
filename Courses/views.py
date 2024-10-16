@@ -30,6 +30,7 @@ def searchCourses(request):
     courses = Course.objects.filter(title__contains=searched)
     return render(request, 'courses/SearchResultCourse.html', {'courses': courses})
 
+#create course - only admins
 @staff_member_required
 def CreateCourse(request):
     if request.method == 'POST':
