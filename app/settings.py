@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'app.wsgi.application'
 #     }
 # }
 
-# conexion a postgres
+#conexion a postgres
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',

@@ -15,24 +15,65 @@
     <div class="row">
         <h4>{{ section.title }}</h4>
         <h6>{{ section.description }}</h6>
-        <div class="col">
+        <div class="col m-2">
             <video controls width="1000" height="550">
                 <source src="{{ section.video.url }}" type="video/mp4">
             </video>
             <p>Fecha: {{ section.created_at }}</p>
 
+            <div>
+                <h5>Comentarios</h5>
+                <div id="comentarioForm">
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form }}
+                        <button class="btn btn-primary" type="submit">Publicar</button>
+                    </form>
+                </div>
+                <br>
+                <div id="comentario-container">
+                    <ul class="list-group list-group-light">
+                        {% for i in comments %}
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <div class="fw-bold"><img
+                                            src="{{ i.user.profile.avatar.url }}"
+                                            class="rounded-circle"
+                                            height="30"
+                                            alt=""
+                                            loading="lazy"
+                                    /> {{ i.user }} </div>
+                                    <div class="text-muted">{{ i.description }}</div>
+
+                                </div>
+                                <span class="badge text-bg-primary rounded-pill">{{ i.created_at | date:"D d M Y" }}</span>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <div class="col lista">
-            <ul class="list-group">
+            <div class="list-group">
                 {% for i in allsections %}
-                    <li class="list-group-item">
-                        <a href="{{ i.id }}">{{ i.title }}</a>
-                    </li>
+
+                    <a href="{{ i.id }}"
+                       class="list-group-item list-group-item-action {% if i.id == section.id %} active {% endif %}"
+                       aria-current="true">
+                        {{ i.title }}
+                    </a>
                 {% endfor %}
-            </ul>
+                {#            <ul class="list-group">#}
+                {#                {% for i in allsections %}#}
+                {#                    <li class="list-group-item {% if i.id == section.id %} active {% endif %}" aria-current="true">#}
+                {#                        <a href="{{ i.id }}">{{ i.title }}</a>#}
+                {#                    </li>#}
+                {#                {% endfor %}#}
+                {#            </ul>#}
+            </div>
         </div>
     </div>
 
-
 {% endblock %}
+
