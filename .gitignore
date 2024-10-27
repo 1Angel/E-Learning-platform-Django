@@ -12,6 +12,7 @@
 
 media/
 .idea/
+.idea
 # AWS User-specific
 .idea/**/aws.xml
 
